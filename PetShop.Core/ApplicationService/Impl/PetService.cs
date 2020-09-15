@@ -42,17 +42,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public Pet EditPet(Pet petEdit)
         {
-            Pet pet = _petRepository.GetPetById(petEdit.Id);
-            if (pet != null)
-            {
-                pet.Name = petEdit.Name;
-                pet.SoldDate = petEdit.SoldDate;
-                pet.Price = petEdit.Price;
-                pet.PreviousOwner = petEdit.PreviousOwner;
-
-                return pet;
-            }
-            return null;
+            return _petRepository.Edit(petEdit);
         }
 
         public List<Pet> GetPets()

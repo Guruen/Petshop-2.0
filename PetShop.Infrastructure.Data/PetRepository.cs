@@ -32,9 +32,12 @@ namespace PetShop.Infrastructure.Data
             if (pet != null)
             {
                 pet.Name = petEdit.Name;
+                pet.Type = petEdit.Type;
+                pet.Birthdate = petEdit.Birthdate;
                 pet.SoldDate = petEdit.SoldDate;
-                pet.Price = petEdit.Price;
+                pet.Color = petEdit.Color;
                 pet.PreviousOwner = petEdit.PreviousOwner;
+                pet.Price = petEdit.Price;
 
                 return pet;
             }

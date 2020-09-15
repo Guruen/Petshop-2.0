@@ -31,36 +31,101 @@ namespace PetShop.WebAPI.Controllers
             }
             catch (Exception e)
             {
-
-                return BadRequest(e.Message);
+                return StatusCode(500, "Something went wrong: " + e);
             }
+
             
         }
 
         // GET api/<PetsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<Pet> Get(int id)
         {
-            return "value";
+            try
+            { 
+                var pet = _petservice.DeletePet(id);
+                if (pet == null)
+                {
+                    return StatusCode(404, "Pet with ID: " + id + " not found");
+                }
+                return pet;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // POST api/<PetsController>
         [HttpPost]
-        public void Post([FromBody] Pet pet)
+        public ActionResult<Pet> Post([FromBody] Pet pet)
         {
-            _petservice.CreatePet(pet);
+            try
+            {
+
+                if(string.IsNullOrEmpty(pet.Name))
+                {
+                    BadRequest("Name is required to create a pet");
+                }
+                if (string.IsNullOrEmpty(pet.Type))
+                {
+                    BadRequest("Type is required to create a pet");
+                }
+
+                return StatusCode(201, _petservice.CreatePet(pet));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // PUT api/<PetsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<Pet> Put(int id, [FromBody] Pet pet)
         {
+            try
+           {
+
+                if(id < 1 || id != pet.Id)
+                {
+                    return BadRequest("Id's need to match!");
+                }
+
+                var editPet = _petservice.EditPet(pet);
+                if(pet == null)
+                {
+                    return StatusCode(404, "Pet with ID: " + id + " not found");
+                }
+
+                
+                return Ok(editPet);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
+
         }
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<Pet> Delete(int id)
         {
+            try { 
+
+                var pet = _petservice.DeletePet(id);
+                if (pet == null)
+                {
+                    return StatusCode(404, "Pet with ID: " + id + " not found");
+                }
+            
+                return Ok($"Pet with ID: {id} is deleted");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
     }
 }
