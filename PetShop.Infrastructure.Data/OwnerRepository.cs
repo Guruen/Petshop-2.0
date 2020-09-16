@@ -27,7 +27,15 @@ namespace PetShop.Infrastructure.Data
 
         public Owner GetOwnerById(int id)
         {
-            throw new NotImplementedException();
+            foreach (var owner in FakeDB.owners)
+            {
+                if (owner.Id == id)
+                {
+                    return owner;
+                }
+
+            }
+            return null;
         }
 
         public List<Owner> ReadOwners()

@@ -39,9 +39,9 @@ namespace PetShop.Core.ApplicationService.Impl
             throw new NotImplementedException();
         }
 
-        public Owner GetOPwnerById(int id)
+        public Owner GetOwnerById(int id)
         {
-            throw new NotImplementedException();
+            return _ownerRepository.GetOwnerById(id);
         }
 
         public List<Owner> GetOwners()

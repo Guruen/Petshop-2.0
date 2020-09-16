@@ -38,9 +38,21 @@ namespace PetShop.WebAPI.Controllers
 
         // GET api/<OwnersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<Owner> Get(int id)
         {
-            return "value";
+            try
+            {
+                var owner = _ownerService.GetOwnerById(id);
+                if (owner == null)
+                {
+                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                }
+                return owner;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // POST api/<OwnersController>

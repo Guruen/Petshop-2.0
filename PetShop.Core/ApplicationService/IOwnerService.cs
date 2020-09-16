@@ -14,7 +14,7 @@ namespace PetShop.Core.ApplicationService
 
         //Read //GET
         public List<Owner> GetOwners();
-        public Owner GetOPwnerById(int id);
+        public Owner GetOwnerById(int id);
 
         //Update //PUT
         public Owner EditOwner(Owner ownerEdit);

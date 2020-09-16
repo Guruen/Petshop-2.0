@@ -43,7 +43,7 @@ namespace PetShop.WebAPI.Controllers
         {
             try
             { 
-                var pet = _petservice.DeletePet(id);
+                var pet = _petservice.GetPetById(id);
                 if (pet == null)
                 {
                     return StatusCode(404, "Pet with ID: " + id + " not found");
