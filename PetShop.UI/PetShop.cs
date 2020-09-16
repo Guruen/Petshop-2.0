@@ -16,7 +16,6 @@ namespace PetShop.UI
             IPetRepository _petRepository = new PetRepository();
             IPetService _petService = new PetService(_petRepository);
 
-            _petRepository.InitData(); //seed data
             
             var printer = new Printer(_petService);
             printer.topMenu();

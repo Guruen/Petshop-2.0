@@ -32,6 +32,8 @@ namespace PetShop.WebAPI
         {
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IOwnerService, OwnerService>();
             services.AddControllers();
         }
 

@@ -11,6 +11,5 @@ namespace PetShop.Core.DomainService
         Pet Delete(int id);
         Pet GetPetById(int id);
         List<Pet> FindPetsByType(string searchString);
-        void InitData();
     }
 }

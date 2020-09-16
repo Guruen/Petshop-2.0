@@ -10,7 +10,7 @@ namespace PetShop.Infrastructure.Data
     {
         public Pet Create(Pet pet)
         {
-            pet.Id = FakeDB.id++;
+            pet.Id = FakeDB.pet_id++;
             FakeDB.pets.Add(pet);
             return pet;
         }
@@ -75,11 +75,6 @@ namespace PetShop.Infrastructure.Data
             return SearchedPets;
         }
 
-
-        public void InitData()
-        {
-            Datainitializer.InitData();
-        }
 
     }
 }
