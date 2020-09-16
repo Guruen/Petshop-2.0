@@ -83,8 +83,22 @@ namespace PetShop.WebAPI.Controllers
 
         // DELETE api/<OwnersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<Owner> Delete(int id)
         {
+            try
+            {
+                var owner = _ownerService.DeleteOwner(id);
+                if (owner == null)
+                {
+                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                }
+
+                return Ok($"Owner with ID: {id} is deleted");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
     }
 }

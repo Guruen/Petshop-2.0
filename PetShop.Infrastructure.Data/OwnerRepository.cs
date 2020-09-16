@@ -17,7 +17,13 @@ namespace PetShop.Infrastructure.Data
 
         public Owner Delete(int id)
         {
-            throw new NotImplementedException();
+            Owner owner = GetOwnerById(id);
+            if (owner != null)
+            {
+                FakeDB.owners.Remove(owner);
+                return owner;
+            }
+            return null;
         }
 
         public Owner Edit(Owner ownerEdit)
