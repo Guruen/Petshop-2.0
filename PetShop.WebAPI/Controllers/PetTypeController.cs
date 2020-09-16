@@ -45,8 +45,24 @@ namespace PetShop.WebAPI.Controllers
 
         // POST api/<PetTypeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<PetType> Post([FromBody] PetType petType)
         {
+            try
+            {
+
+                if (string.IsNullOrEmpty(petType.name))
+                {
+                    BadRequest("Name is required to create a Pet Type");
+                }
+
+
+                return StatusCode(201, _petTypeService.CreatePetType(petType));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
+
         }
 
         // PUT api/<PetTypeController>/5

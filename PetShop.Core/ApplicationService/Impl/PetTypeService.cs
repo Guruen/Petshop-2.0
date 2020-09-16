@@ -14,9 +14,19 @@ namespace PetShop.Core.ApplicationService.Impl
         {
             _petTypeRepository = petTypeRepository;
         }
+
+        public PetType NewPetType(string name)
+        {
+            PetType petType = new PetType();
+
+            petType.name = name;
+
+            return petType;
+        }
+
         public PetType CreatePetType(PetType petType)
         {
-            throw new NotImplementedException();
+            return _petTypeRepository.Create(petType);
         }
 
         public PetType DeletePetType(int id)
@@ -39,9 +49,6 @@ namespace PetShop.Core.ApplicationService.Impl
             throw new NotImplementedException();
         }
 
-        public PetType NewPetType(string name)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

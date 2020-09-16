@@ -10,7 +10,9 @@ namespace PetShop.Infrastructure.Data
     {
         public PetType Create(PetType petType)
         {
-            throw new NotImplementedException();
+            petType.Id = FakeDB.type_id++;
+            FakeDB.petTypes.Add(petType);
+            return petType;
         }
 
         public PetType Delete(int id)
