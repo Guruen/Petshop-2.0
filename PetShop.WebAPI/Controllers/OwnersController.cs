@@ -45,8 +45,22 @@ namespace PetShop.WebAPI.Controllers
 
         // POST api/<OwnersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Owner> Post([FromBody] Owner owner)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(owner.name))
+                {
+                    BadRequest("Name is required to create an owner");
+                }
+
+                return StatusCode(201, _ownerService.CreateOwner(owner));
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // PUT api/<OwnersController>/5

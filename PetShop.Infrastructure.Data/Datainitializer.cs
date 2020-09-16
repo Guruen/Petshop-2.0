@@ -20,7 +20,7 @@ namespace PetShop.Infrastructure.Data
             p.Color = "Green";
             p.PreviousOwner = "";
             p.Price = 27.5;
-
+            FakeDB.pets.Add(p);
 
             Pet p1 = new Pet();
             p1.Id = FakeDB.pet_id++;
@@ -31,9 +31,14 @@ namespace PetShop.Infrastructure.Data
             p1.Color = "Brown";
             p1.PreviousOwner = "";
             p1.Price = 7.5;
-
-            FakeDB.pets.Add(p);
             FakeDB.pets.Add(p1);
+
+
+            Owner o = new Owner();
+            o.Id = FakeDB.owner_id++;
+            o.name = "Bob Bobson";
+            o.petsowned = "1, 2";
+            FakeDB.owners.Add(o);
 
         }
 

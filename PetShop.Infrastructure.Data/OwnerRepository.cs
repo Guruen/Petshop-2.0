@@ -10,7 +10,9 @@ namespace PetShop.Infrastructure.Data
     {
         public Owner Create(Owner owner)
         {
-            throw new NotImplementedException();
+            owner.Id = FakeDB.owner_id++;
+            FakeDB.owners.Add(owner);
+            return owner;
         }
 
         public Owner Delete(int id)

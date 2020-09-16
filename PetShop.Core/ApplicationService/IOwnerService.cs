@@ -10,7 +10,7 @@ namespace PetShop.Core.ApplicationService
         public Owner NewOwner(string name, string petsowned);
 
         //Create //POST
-        public Owner CreateOwner(Pet pet);
+        public Owner CreateOwner(Owner owner);
 
         //Read //GET
         public List<Owner> GetOwners();

@@ -15,9 +15,18 @@ namespace PetShop.Core.ApplicationService.Impl
             _ownerRepository = ownerRepository;
         }
 
-        public Owner CreateOwner(Pet pet)
+        public Owner NewOwner(string name, string petsowned)
         {
-            throw new NotImplementedException();
+            Owner newOwner = new Owner();
+            newOwner.name = name;
+            newOwner.petsowned = petsowned;
+            
+            return newOwner;
+        }
+
+        public Owner CreateOwner(Owner owner)
+        {
+            return _ownerRepository.Create(owner);
         }
 
         public Owner DeleteOwner(int id)
@@ -40,9 +49,6 @@ namespace PetShop.Core.ApplicationService.Impl
             return _ownerRepository.ReadOwners();
         }
 
-        public Owner NewOwner(string name, string petsowned)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
