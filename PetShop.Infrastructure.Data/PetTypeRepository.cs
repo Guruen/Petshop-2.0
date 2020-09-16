@@ -30,7 +30,7 @@ namespace PetShop.Infrastructure.Data
 
         public List<PetType> readPetTypes()
         {
-            throw new NotImplementedException();
+            return FakeDB.petTypes;
         }
     }
 }

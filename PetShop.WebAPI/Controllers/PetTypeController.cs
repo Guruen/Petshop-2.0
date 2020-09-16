@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Core.ApplicationService;
+using PetShop.Core.Entity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,11 +14,26 @@ namespace PetShop.WebAPI.Controllers
     [ApiController]
     public class PetTypeController : ControllerBase
     {
+
+        private readonly IPetTypeService _petTypeService;
+
+        public PetTypeController(IPetTypeService petTypeService)
+        {
+            _petTypeService = petTypeService;
+        }
+
         // GET: api/<PetTypeController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<List<PetType>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Ok(_petTypeService.GetPetType());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // GET api/<PetTypeController>/5

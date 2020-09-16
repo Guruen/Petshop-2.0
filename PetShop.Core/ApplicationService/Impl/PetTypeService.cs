@@ -1,4 +1,5 @@
-﻿using PetShop.Core.Entity;
+﻿using PetShop.Core.DomainService;
+using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,12 @@ namespace PetShop.Core.ApplicationService.Impl
 {
     public class PetTypeService : IPetTypeService
     {
+        private IPetTypeRepository _petTypeRepository;
+
+        public PetTypeService(IPetTypeRepository petTypeRepository)
+        {
+            _petTypeRepository = petTypeRepository;
+        }
         public PetType CreatePetType(PetType petType)
         {
             throw new NotImplementedException();
@@ -24,7 +31,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public List<PetType> GetPetType()
         {
-            throw new NotImplementedException();
+            return _petTypeRepository.readPetTypes();
         }
 
         public PetType GetPetTypeById(int id)
