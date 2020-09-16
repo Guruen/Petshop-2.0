@@ -38,9 +38,21 @@ namespace PetShop.WebAPI.Controllers
 
         // GET api/<PetTypeController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<PetType> Get(int id)
         {
-            return "value";
+            try
+            {
+                var petType = _petTypeService.GetPetTypeById(id);
+                if (petType == null)
+                {
+                    return StatusCode(404, "Pet Type with ID: " + id + " not found");
+                }
+                return petType;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
 
         // POST api/<PetTypeController>

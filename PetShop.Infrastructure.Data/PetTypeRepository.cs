@@ -27,7 +27,15 @@ namespace PetShop.Infrastructure.Data
 
         public PetType GetPetTypeById(int id)
         {
-            throw new NotImplementedException();
+            foreach (var petType in FakeDB.petTypes)
+            {
+                if (petType.Id == id)
+                {
+                    return petType;
+                }
+
+            }
+            return null;
         }
 
         public List<PetType> readPetTypes()

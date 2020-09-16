@@ -46,7 +46,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public PetType GetPetTypeById(int id)
         {
-            throw new NotImplementedException();
+            return _petTypeRepository.GetPetTypeById(id);
         }
 
 
