@@ -36,7 +36,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public Owner EditOwner(Owner ownerEdit)
         {
-            throw new NotImplementedException();
+            return _ownerRepository.Edit(ownerEdit);
         }
 
         public Owner GetOwnerById(int id)

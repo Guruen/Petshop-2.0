@@ -28,7 +28,15 @@ namespace PetShop.Infrastructure.Data
 
         public Owner Edit(Owner ownerEdit)
         {
-            throw new NotImplementedException();
+            Owner owner = GetOwnerById(ownerEdit.Id);
+            if (owner != null)
+            {
+                owner.name = ownerEdit.name;
+                owner.petsowned = ownerEdit.petsowned;
+                
+                return owner;
+            }
+            return null;
         }
 
         public Owner GetOwnerById(int id)

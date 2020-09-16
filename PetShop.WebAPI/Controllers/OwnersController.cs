@@ -77,8 +77,31 @@ namespace PetShop.WebAPI.Controllers
 
         // PUT api/<OwnersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<Owner> Put(int id, [FromBody] Owner owner)
         {
+            try
+            {
+
+                if (id < 1 || id != owner.Id)
+                {
+                    return BadRequest("Id's need to match!");
+                }
+
+                var editOwner = _ownerService.EditOwner(owner);
+                if (owner == null)
+                {
+                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                }
+
+
+                return Ok(editOwner);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
+
+
         }
 
         // DELETE api/<OwnersController>/5
