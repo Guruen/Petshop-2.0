@@ -28,7 +28,14 @@ namespace PetShop.Infrastructure.Data
 
         public PetType Edit(PetType petTypeEdit)
         {
-            throw new NotImplementedException();
+            PetType petType = GetPetTypeById(petTypeEdit.Id);
+            if (petType != null)
+            {
+                petType.name = petTypeEdit.name;
+
+                return petType;
+            }
+            return null;
         }
 
         public PetType GetPetTypeById(int id)

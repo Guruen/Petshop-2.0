@@ -79,8 +79,30 @@ namespace PetShop.WebAPI.Controllers
 
         // PUT api/<PetTypeController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<PetType> Put(int id, [FromBody] PetType petType)
         {
+            try
+            {
+
+                if (id < 1 || id != petType.Id)
+                {
+                    return BadRequest("Id's need to match!");
+                }
+
+                var editPetType = _petTypeService.EditPetType(petType);
+                if (editPetType == null)
+                {
+                    return StatusCode(404, "Pet type with ID: " + id + " not found");
+                }
+
+
+                return Ok(editPetType);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
+
         }
 
         // DELETE api/<PetTypeController>/5

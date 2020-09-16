@@ -36,7 +36,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public PetType EditPetType(PetType petTypeEdit)
         {
-            throw new NotImplementedException();
+            return _petTypeRepository.Edit(petTypeEdit);
         }
 
         public List<PetType> GetPetType()

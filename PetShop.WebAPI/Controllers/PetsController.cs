@@ -93,7 +93,7 @@ namespace PetShop.WebAPI.Controllers
                 }
 
                 var editPet = _petservice.EditPet(pet);
-                if(pet == null)
+                if(editPet == null)
                 {
                     return StatusCode(404, "Pet with ID: " + id + " not found");
                 }

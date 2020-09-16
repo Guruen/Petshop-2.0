@@ -88,7 +88,7 @@ namespace PetShop.WebAPI.Controllers
                 }
 
                 var editOwner = _ownerService.EditOwner(owner);
-                if (owner == null)
+                if (editOwner == null)
                 {
                     return StatusCode(404, "Owner with ID: " + id + " not found");
                 }
