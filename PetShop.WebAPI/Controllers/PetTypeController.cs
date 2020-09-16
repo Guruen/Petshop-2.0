@@ -85,8 +85,22 @@ namespace PetShop.WebAPI.Controllers
 
         // DELETE api/<PetTypeController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<PetType> Delete(int id)
         {
+            try
+            {
+                var petType = _petTypeService.DeletePetType(id);
+                if (petType == null)
+                {
+                    return StatusCode(404, "Pet Type with ID: " + id + " not found");
+                }
+
+                return Ok($"Pet Type with ID: {id} is deleted");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Something went wrong: " + e);
+            }
         }
     }
 }

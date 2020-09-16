@@ -31,7 +31,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public PetType DeletePetType(int id)
         {
-            throw new NotImplementedException();
+            return _petTypeRepository.Delete(id);
         }
 
         public PetType EditPetType(PetType petTypeEdit)

@@ -17,7 +17,13 @@ namespace PetShop.Infrastructure.Data
 
         public PetType Delete(int id)
         {
-            throw new NotImplementedException();
+            PetType petType = GetPetTypeById(id);
+            if (petType != null)
+            {
+                FakeDB.petTypes.Remove(petType);
+                return petType;
+            }
+            return null;
         }
 
         public PetType Edit(PetType petTypeEdit)
