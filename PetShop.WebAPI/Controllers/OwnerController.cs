@@ -12,12 +12,12 @@ namespace PetShop.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OwnersController : ControllerBase
+    public class OwnerController : ControllerBase
     {
 
         private readonly IOwnerService _ownerService;
 
-        public OwnersController(IOwnerService ownerService)
+        public OwnerController(IOwnerService ownerService)
         {
             _ownerService = ownerService;
         }
