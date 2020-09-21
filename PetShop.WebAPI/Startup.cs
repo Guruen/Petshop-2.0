@@ -49,6 +49,7 @@ namespace PetShop.WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                Datainitializer.InitData();
     
             }
 

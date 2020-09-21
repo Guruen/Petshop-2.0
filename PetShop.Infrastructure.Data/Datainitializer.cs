@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PetShop.Infrastructure.Data
 {
-    class Datainitializer
+    public class Datainitializer
     {
 
         public static void InitData()
@@ -39,6 +39,27 @@ namespace PetShop.Infrastructure.Data
             o.name = "Bob Bobson";
             o.petsowned = "1, 2";
             FakeDB.owners.Add(o);
+
+            Owner o1 = new Owner();
+            o1.Id = FakeDB.owner_id++;
+            o1.name = "John Johnson";
+            o1.petsowned = "1, 2";
+            FakeDB.owners.Add(o1);
+
+            PetType pT = new PetType();
+            pT.Id = FakeDB.type_id++;
+            pT.name = "Fish";
+            FakeDB.petTypes.Add(pT);
+
+            PetType pT1 = new PetType();
+            pT1.Id = FakeDB.type_id++;
+            pT1.name = "Whale";
+            FakeDB.petTypes.Add(pT1);
+
+            PetType pT2 = new PetType();
+            pT2.Id = FakeDB.type_id++;
+            pT2.name = "Baboon";
+            FakeDB.petTypes.Add(pT2);
 
         }
 
