@@ -7,7 +7,7 @@ namespace PetShop.Core.DomainService
 {
     public interface IPetTypeRepository
     {
-        List<PetType> readPetTypes();
+        List<PetType> readPetTypes(string name);
         PetType Create(PetType petType);
         PetType Edit(PetType petTypeEdit);
         PetType Delete(int id);

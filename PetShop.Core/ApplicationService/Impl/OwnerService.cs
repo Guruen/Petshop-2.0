@@ -44,9 +44,9 @@ namespace PetShop.Core.ApplicationService.Impl
             return _ownerRepository.GetOwnerById(id);
         }
 
-        public List<Owner> GetOwners()
+        public List<Owner> GetOwners(string name)
         {
-            return _ownerRepository.ReadOwners();
+            return _ownerRepository.ReadOwners(name);
         }
 
 

@@ -22,13 +22,13 @@ namespace PetShop.WebAPI.Controllers
             _ownerService = ownerService;
         }
 
-        // GET: api/<OwnersController>
+        // GET: api/<OwnerController>
         [HttpGet]
-        public ActionResult<List<Owner>> Get()
+        public ActionResult<List<Owner>> Get([FromQuery] String name)
         {
             try
             {
-                return Ok(_ownerService.GetOwners());
+                  return Ok(_ownerService.GetOwners(name));
             }
             catch (Exception e)
             {
@@ -36,7 +36,7 @@ namespace PetShop.WebAPI.Controllers
             }
         }
 
-        // GET api/<OwnersController>/5
+        // GET api/<OwnerController>/5
         [HttpGet("{id}")]
         public ActionResult<Owner> Get(int id)
         {
@@ -55,7 +55,7 @@ namespace PetShop.WebAPI.Controllers
             }
         }
 
-        // POST api/<OwnersController>
+        // POST api/<OwnerController>
         [HttpPost]
         public ActionResult<Owner> Post([FromBody] Owner owner)
         {
@@ -75,7 +75,7 @@ namespace PetShop.WebAPI.Controllers
             }
         }
 
-        // PUT api/<OwnersController>/5
+        // PUT api/<OwnerController>/5
         [HttpPut("{id}")]
         public ActionResult<Owner> Put(int id, [FromBody] Owner owner)
         {
@@ -94,7 +94,7 @@ namespace PetShop.WebAPI.Controllers
                 }
 
 
-                return Ok(editOwner);
+                return StatusCode(202, editOwner);
             }
             catch (Exception e)
             {
@@ -104,7 +104,7 @@ namespace PetShop.WebAPI.Controllers
 
         }
 
-        // DELETE api/<OwnersController>/5
+        // DELETE api/<OwnerController>/5
         [HttpDelete("{id}")]
         public ActionResult<Owner> Delete(int id)
         {
@@ -116,7 +116,7 @@ namespace PetShop.WebAPI.Controllers
                     return StatusCode(404, "Owner with ID: " + id + " not found");
                 }
 
-                return Ok($"Owner with ID: {id} is deleted");
+                return StatusCode(202, "Owner with ID: {id} is deleted");
             }
             catch (Exception e)
             {

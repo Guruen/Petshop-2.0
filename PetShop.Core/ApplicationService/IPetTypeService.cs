@@ -15,7 +15,7 @@ namespace PetShop.Core.ApplicationService
         public PetType CreatePetType(PetType petType);
 
         //Read //GET
-        public List<PetType> GetPetType();
+        public List<PetType> GetPetType(string name);
         public PetType GetPetTypeById(int id);
 
         //Update //PUT

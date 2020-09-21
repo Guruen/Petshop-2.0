@@ -24,11 +24,11 @@ namespace PetShop.WebAPI.Controllers
 
         // GET: api/<PetTypeController>
         [HttpGet]
-        public ActionResult<List<PetType>> Get()
+        public ActionResult<List<PetType>> Get([FromQuery] String name)
         {
             try
             {
-                return Ok(_petTypeService.GetPetType());
+                return Ok(_petTypeService.GetPetType(name));
             }
             catch (Exception e)
             {
@@ -96,7 +96,7 @@ namespace PetShop.WebAPI.Controllers
                 }
 
 
-                return Ok(editPetType);
+                return StatusCode(202, editPetType);
             }
             catch (Exception e)
             {
@@ -117,7 +117,7 @@ namespace PetShop.WebAPI.Controllers
                     return StatusCode(404, "Pet Type with ID: " + id + " not found");
                 }
 
-                return Ok($"Pet Type with ID: {id} is deleted");
+                return StatusCode(202, $"Pet Type with ID: {id} is deleted");
             }
             catch (Exception e)
             {

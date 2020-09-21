@@ -45,18 +45,19 @@ namespace PetShop.Core.ApplicationService.Impl
             return _petRepository.Edit(petEdit);
         }
 
-        public List<Pet> GetPets()
+        public List<Pet> GetPets(string name)
         {
-            _petRepository.ReadPets().Sort((x, y) => x.Id.CompareTo(y.Id));
-            return _petRepository.ReadPets();
+            _petRepository.ReadPets(name).Sort((x, y) => x.Id.CompareTo(y.Id));
+            return _petRepository.ReadPets(name);
         }
 
-        public List<Pet> GetPetsSortedByPrice()
-        {
-            _petRepository.ReadPets().Sort((x, y) => x.Price.CompareTo(y.Price));
-            return _petRepository.ReadPets();
+        // move to filtered return
+        //public List<Pet> GetPetsSortedByPrice()
+        //{
+        //    _petRepository.ReadPets().Sort((x, y) => x.Price.CompareTo(y.Price));
+        //    return _petRepository.ReadPets();
 
-        }
+        //}
 
         public List<Pet> FindPetsByType(string searchString)
         {

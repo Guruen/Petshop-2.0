@@ -2,6 +2,7 @@
 using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace PetShop.Infrastructure.Data
@@ -52,9 +53,32 @@ namespace PetShop.Infrastructure.Data
             return null;
         }
 
-        public List<Owner> ReadOwners()
+        public List<Owner> ReadOwners(string name)
         {
-            return FakeDB.owners;
+            if (!string.IsNullOrEmpty(name))
+            {
+                List<Owner> filteredList = new List<Owner>();
+
+                foreach (var Owner in FakeDB.owners)
+                {
+                    if (Owner.name.ToLower() == name.ToLower())
+                    {
+                        filteredList.Add(Owner);
+                    }
+
+                }
+
+
+                return filteredList;
+
+            }
+            else
+            {
+                return FakeDB.owners;
+            }
+
+
+            
         }
     }
 }

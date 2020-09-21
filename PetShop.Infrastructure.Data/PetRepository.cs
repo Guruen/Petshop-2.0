@@ -57,9 +57,28 @@ namespace PetShop.Infrastructure.Data
             return null;
         }
 
-        public List<Pet> ReadPets()
+        public List<Pet> ReadPets(string name)
         {
-            return FakeDB.pets;
+            if (!string.IsNullOrEmpty(name))
+            {
+                List<Pet> filteredList = new List<Pet>();
+
+                foreach (var Pet in FakeDB.pets)
+                {
+                    if (Pet.Name.ToLower() == name.ToLower())
+                    {
+                        filteredList.Add(Pet);
+                    }
+
+                }
+
+                return filteredList;
+
+            }
+            else
+            {
+                return FakeDB.pets;
+            }
         }
 
         public List<Pet> FindPetsByType(string searchString)
