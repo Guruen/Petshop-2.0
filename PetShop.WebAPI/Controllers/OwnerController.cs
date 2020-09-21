@@ -47,7 +47,7 @@ namespace PetShop.WebAPI.Controllers
                 {
                     return StatusCode(404, "Owner with ID: " + id + " not found");
                 }
-                return owner;
+                return Ok(owner);
             }
             catch (Exception e)
             {
