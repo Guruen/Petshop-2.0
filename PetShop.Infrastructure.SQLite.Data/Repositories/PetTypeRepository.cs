@@ -21,7 +21,6 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
             var type = _ctx.PetTypes.Add(petType).Entity;
             _ctx.SaveChanges();
             return type;
-
         }
 
         public PetType Delete(int id)
@@ -39,7 +38,7 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
             return _ctx.PetTypes.FirstOrDefault(t => t.Id == id);
         }
 
-        public IEnumerable<PetType> readPetTypes(string name)
+        public IEnumerable<PetType> readPetTypes()
         {
             return _ctx.PetTypes;
         }

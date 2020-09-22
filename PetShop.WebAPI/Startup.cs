@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PetShop.Core.ApplicationService;
 using PetShop.Core.ApplicationService.Impl;
 using PetShop.Core.DomainService;
+using PetShop.Core.Entity;
 using PetShop.Infrastructure.SQLite.Data;
 using PetShop.Infrastructure.SQLite.Data.Repositories;
 
@@ -27,8 +28,7 @@ namespace PetShop.WebAPI
         {
 
             services.AddDbContext<PetShopContext>(
-                opt => opt.UseSqlite("Data Source=PetShopDB.db")
-                );
+                opt => opt.UseSqlite("Data Source=PetShopDB.db"));
 
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
@@ -47,8 +47,19 @@ namespace PetShop.WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //Datainitializer.InitData();
-    
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<PetShopContext>();
+                    ctx.Database.EnsureCreated();
+                    ctx.PetTypes.Add(new PetType()
+                    {
+                        Id = 1,
+                        name = "fish"
+                    });
+                }
+
+                
+
             }
 
             app.UseHttpsRedirection();
