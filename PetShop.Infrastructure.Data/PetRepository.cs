@@ -32,11 +32,11 @@ namespace PetShop.Infrastructure.Data
             if (pet != null)
             {
                 pet.Name = petEdit.Name;
-                pet.Type = petEdit.Type;
+                pet.PetType = petEdit.PetType;
                 pet.Birthdate = petEdit.Birthdate;
                 pet.SoldDate = petEdit.SoldDate;
                 pet.Color = petEdit.Color;
-                pet.PreviousOwner = petEdit.PreviousOwner;
+                pet.Owner = petEdit.Owner;
                 pet.Price = petEdit.Price;
 
                 return pet;
@@ -86,7 +86,7 @@ namespace PetShop.Infrastructure.Data
             List<Pet> SearchedPets = new List<Pet>();
             foreach (var pet in FakeDB.pets)
             {
-                if (pet.Type.ToLower() == searchString)
+                if (pet.PetType.name.ToLower() == searchString)
                 {
                     SearchedPets.Add(pet);
                 }

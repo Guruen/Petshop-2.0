@@ -8,7 +8,7 @@ namespace PetShop.Core.Entity
 
         public string Name { get; set; }
 
-        public string Type { get; set; }
+        public PetType PetType { get; set; }
 
         public DateTime Birthdate { get; set; }
 
@@ -16,13 +16,13 @@ namespace PetShop.Core.Entity
 
         public string Color { get; set; }
 
-        public string PreviousOwner { get; set; }
-
         public double Price { get; set; }
+
+        public Owner Owner { get; set; }
 
         public override string ToString()
         {
-            return Id + " " + Name + " " + Type + " " + Birthdate + " " + Price;
+            return Id + " " + Name + " " + PetType + " " + Birthdate + " " + Price;
         }
 
     }

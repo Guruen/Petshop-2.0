@@ -10,16 +10,18 @@ namespace PetShop.Core.ApplicationService.Impl
     {
 
         private IOwnerRepository _ownerRepository;
-        public OwnerService(IOwnerRepository ownerRepository)
+        private IPetRepository _petRepository;
+        public OwnerService(IOwnerRepository ownerRepository,
+            IPetRepository petRepository)
         {
             _ownerRepository = ownerRepository;
+            _petRepository = petRepository;
         }
 
-        public Owner NewOwner(string name, string petsowned)
+        public Owner NewOwner(string name)
         {
             Owner newOwner = new Owner();
             newOwner.name = name;
-            newOwner.petsowned = petsowned;
             
             return newOwner;
         }

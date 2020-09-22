@@ -8,22 +8,28 @@ namespace PetShop.Core.ApplicationService.Impl
     public class PetService : IPetService
     {
 
-        private IPetRepository _petRepository;
+        readonly IPetRepository _petRepository;
+        readonly IPetTypeRepository _petTypeRepository;
+        readonly IOwnerRepository _ownerRepository;
 
-        public PetService(IPetRepository petRepository)
+        public PetService(IPetRepository petRepository,
+            IPetTypeRepository petTypeRepository,
+            IOwnerRepository ownerRepository)
         {
             _petRepository = petRepository;
+            _petTypeRepository = petTypeRepository;
+            _ownerRepository = ownerRepository;
         }
 
-        public Pet NewPet(string name, string type, DateTime birthdate, string color, string previousowner, double price)
+        public Pet NewPet(string name, PetType type, DateTime birthdate, string color, Owner owner, double price)
         {
             Pet newPet = new Pet();
             
             newPet.Name = name;
-            newPet.Type = type;
+            newPet.PetType = type;
             newPet.Birthdate = birthdate;
+            newPet.Owner = owner;
             newPet.Color = color;
-            newPet.PreviousOwner = previousowner;
             newPet.Price = price;
             
             return newPet;
@@ -47,17 +53,14 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public List<Pet> GetPets(string name)
         {
-            _petRepository.ReadPets(name).Sort((x, y) => x.Id.CompareTo(y.Id));
-            return _petRepository.ReadPets(name);
+            List<Pet> pets = _petRepository.ReadPets(name);
+            foreach (var pet in pets)
+            {
+                pet.PetType = _petTypeRepository.GetPetTypeById(pet.PetType.Id);
+                pet.Owner = _ownerRepository.GetOwnerById(pet.Owner.Id);
+            }
+            return pets;
         }
-
-        // move to filtered return
-        //public List<Pet> GetPetsSortedByPrice()
-        //{
-        //    _petRepository.ReadPets().Sort((x, y) => x.Price.CompareTo(y.Price));
-        //    return _petRepository.ReadPets();
-
-        //}
 
         public List<Pet> FindPetsByType(string searchString)
         {

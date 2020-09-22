@@ -7,7 +7,7 @@ namespace PetShop.Core.ApplicationService
     public interface IOwnerService
     {
         //New Owner
-        public Owner NewOwner(string name, string petsowned);
+        public Owner NewOwner(string name);
 
         //Create //POST
         public Owner CreateOwner(Owner owner);

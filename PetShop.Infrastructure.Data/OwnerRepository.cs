@@ -33,7 +33,7 @@ namespace PetShop.Infrastructure.Data
             if (owner != null)
             {
                 owner.name = ownerEdit.name;
-                owner.petsowned = ownerEdit.petsowned;
+                owner.Pets = ownerEdit.Pets;
                 
                 return owner;
             }

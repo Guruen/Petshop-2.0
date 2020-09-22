@@ -8,7 +8,7 @@ namespace PetShop.Core.ApplicationService
     {
 
         //New Pet
-        public Pet NewPet(string name, string type, DateTime birthdate, string color, string previousowner, double price);
+        public Pet NewPet(string name, PetType type, DateTime birthdate, string color, Owner owner, double price);
 
         //Create //POST
         public Pet CreatePet(Pet pet);

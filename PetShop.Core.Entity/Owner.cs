@@ -10,6 +10,6 @@ namespace PetShop.Core.Entity
 
         public string name { get; set; }
         
-        public string petsowned { get; set; }
+        public List<Pet> Pets { get; set; }
     }
 }

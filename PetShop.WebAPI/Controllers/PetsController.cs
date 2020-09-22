@@ -67,11 +67,10 @@ namespace PetShop.WebAPI.Controllers
                 {
                     BadRequest("Name is required to create a pet");
                 }
-                if (string.IsNullOrEmpty(pet.Type))
+                if (pet.PetType == null)
                 {
-                    BadRequest("Type is required to create a pet");
+                    BadRequest("Pet type is required to create a pet");
                 }
-
                 return StatusCode(201, _petservice.CreatePet(pet));
             }
             catch (Exception e)
