@@ -42,7 +42,7 @@ namespace PetShop.WebAPI.Controllers
         {
             try
             {
-                var owner = _ownerService.GetOwnerById(id);
+                var owner = _ownerService.GetOwnerByIdIncludingPets(id);
                 if (owner == null)
                 {
                     return StatusCode(404, "Owner with ID: " + id + " not found");

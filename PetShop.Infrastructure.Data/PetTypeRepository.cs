@@ -51,7 +51,7 @@ namespace PetShop.Infrastructure.Data
             return null;
         }
 
-        public List<PetType> readPetTypes(string name)
+        public IEnumerable<PetType> readPetTypes(string name)
         {
 
             if (!string.IsNullOrEmpty(name))

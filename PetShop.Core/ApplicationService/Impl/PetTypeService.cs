@@ -2,6 +2,7 @@
 using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PetShop.Core.ApplicationService.Impl
@@ -41,7 +42,7 @@ namespace PetShop.Core.ApplicationService.Impl
 
         public List<PetType> GetPetType(string name)
         {
-            return _petTypeRepository.readPetTypes(name);
+            return _petTypeRepository.readPetTypes(name).ToList();
         }
 
         public PetType GetPetTypeById(int id)
