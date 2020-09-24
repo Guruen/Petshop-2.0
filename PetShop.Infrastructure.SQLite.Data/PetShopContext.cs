@@ -6,13 +6,13 @@ using System.Text;
 
 namespace PetShop.Infrastructure.SQLite.Data
 {
-    public class PetShopContext : DbContext
+    public class PetShopContext: DbContext
     {
-        public PetShopContext(DbContextOptions<PetShopContext> opt)
-            : base() { } //How to call superclass constructor
+        public PetShopContext(DbContextOptions<PetShopContext> opt): base(opt) { }
 
         public DbSet<PetType> PetTypes { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Pet> Pets { get; set; }
+
     }
 }

@@ -50,12 +50,7 @@ namespace PetShop.WebAPI
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<PetShopContext>();
-                    ctx.Database.EnsureCreated();
-                    ctx.PetTypes.Add(new PetType()
-                    {
-                        Id = 1,
-                        name = "fish"
-                    });
+                    Datainitializer.SeedDB(ctx);
                 }
 
                 
