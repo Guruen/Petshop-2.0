@@ -47,17 +47,15 @@ namespace PetShop.Core.ApplicationService.Impl
             return _ownerRepository.GetOwnerById(id);
         }
 
-        public List<Owner> GetOwners(string name)
+        public List<Owner> GetOwners()
         {
-            return _ownerRepository.ReadOwners(name);
+            return _ownerRepository.ReadOwners().ToList();
         }
 
         public Owner GetOwnerByIdIncludingPets(int id)
         {
             var owner = _ownerRepository.GetOwnerById(id);
-            //owner.Pets = _petRepository.ReadPets("")
-            //    .Where(pet => pet.Owner.Id == owner.Id)
-            //    .ToList();
+
             return owner;
         }
     }

@@ -14,11 +14,10 @@ namespace PetShop.Core.ApplicationService
         public Pet CreatePet(Pet pet);
 
         //Read //GET
-        public List<Pet> GetPets(string name);
+        public List<Pet> GetPets();
 
         //public List<Pet> GetPetsSortedByPrice();
         
-        public List<Pet> FindPetsByType(string searchString);
         public Pet GetPetById(int id);
 
         //Update //PUT

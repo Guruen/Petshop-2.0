@@ -40,9 +40,9 @@ namespace PetShop.Core.ApplicationService.Impl
             return _petTypeRepository.Edit(petTypeEdit);
         }
 
-        public IEnumerable<PetType> GetPetType()
+        public List<PetType> GetPetType()
         {
-            return _petTypeRepository.readPetTypes();
+            return _petTypeRepository.readPetTypes().ToList();
         }
 
         public PetType GetPetTypeById(int id)

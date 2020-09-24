@@ -2,6 +2,7 @@
 using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PetShop.Core.ApplicationService.Impl
 {
@@ -51,26 +52,15 @@ namespace PetShop.Core.ApplicationService.Impl
             return _petRepository.Edit(petEdit);
         }
 
-        public List<Pet> GetPets(string name)
+        public List<Pet> GetPets()
         {
-            List<Pet> pets = _petRepository.ReadPets(name);
-            foreach (var pet in pets)
-            {
-                pet.PetType = _petTypeRepository.GetPetTypeById(pet.PetType.Id);
-                pet.Owner = _ownerRepository.GetOwnerById(pet.Owner.Id);
-            }
-            return pets;
+            return _petRepository.ReadPets().ToList();
         }
-
-        public List<Pet> FindPetsByType(string searchString)
-        {
-            return _petRepository.FindPetsByType(searchString);
-        }
-
 
         public Pet GetPetById(int id)
         {
             return _petRepository.GetPetById(id);
         }
+
     }
 }

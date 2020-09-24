@@ -7,7 +7,7 @@ namespace PetShop.Core.DomainService
 {
     public interface IOwnerRepository
     {
-        List<Owner> ReadOwners(string name);
+        IEnumerable<Owner> ReadOwners();
         Owner Create(Owner owner);
         Owner Edit(Owner ownerEdit);
         Owner Delete(int id);

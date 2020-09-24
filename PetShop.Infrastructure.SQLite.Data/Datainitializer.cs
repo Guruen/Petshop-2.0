@@ -13,6 +13,7 @@ namespace PetShop.Infrastructure.SQLite.Data
             ctx.Database.EnsureCreated();
             var type1 = ctx.PetTypes.Add(new PetType()
             {
+                Id = 1,
                 name = "Fish"
             }).Entity;
 
@@ -33,7 +34,7 @@ namespace PetShop.Infrastructure.SQLite.Data
 
             }).Entity;
 
-            var pet1 = ctx.Pets.Add(new Pet()
+            ctx.Pets.Add(new Pet()
             {
 
                 Name = "John",
@@ -45,7 +46,7 @@ namespace PetShop.Infrastructure.SQLite.Data
                 Price = 27.5
 
 
-            }).Entity;
+            });
 
 
             ctx.SaveChanges();

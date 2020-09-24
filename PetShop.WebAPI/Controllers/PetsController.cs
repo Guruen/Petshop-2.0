@@ -23,11 +23,11 @@ namespace PetShop.WebAPI.Controllers
 
         // GET: api/<PetsController>
         [HttpGet]
-        public ActionResult<List<Pet>> Get([FromQuery] String name)
+        public ActionResult<List<Pet>> Get()
         {
             try
             {
-                return Ok(_petservice.GetPets(name));
+                return Ok(_petservice.GetPets());
             }
             catch (Exception e)
             {

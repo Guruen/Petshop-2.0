@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using PetShop.Core.ApplicationService;
 using PetShop.Core.ApplicationService.Impl;
 using PetShop.Core.DomainService;
-using PetShop.Core.Entity;
 using PetShop.Infrastructure.SQLite.Data;
 using PetShop.Infrastructure.SQLite.Data.Repositories;
 
@@ -37,8 +36,12 @@ namespace PetShop.WebAPI
             services.AddScoped<IPetTypeRepository, PetTypeRepository>();
             services.AddScoped<IPetTypeService, PetTypeService>();
             services.AddControllers();
-            
-            
+
+            services.AddControllers().AddNewtonsoftJson(option 
+                => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

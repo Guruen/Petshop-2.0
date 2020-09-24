@@ -13,7 +13,7 @@ namespace PetShop.Core.ApplicationService
         public Owner CreateOwner(Owner owner);
 
         //Read //GET
-        public List<Owner> GetOwners(string name);
+        public List<Owner> GetOwners();
         public Owner GetOwnerById(int id);
         public Owner GetOwnerByIdIncludingPets(int id);
 

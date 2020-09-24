@@ -24,11 +24,11 @@ namespace PetShop.WebAPI.Controllers
 
         // GET: api/<OwnerController>
         [HttpGet]
-        public ActionResult<List<Owner>> Get([FromQuery] String name)
+        public ActionResult<List<Owner>> Get()
         {
             try
             {
-                  return Ok(_ownerService.GetOwners(name));
+                  return Ok(_ownerService.GetOwners());
             }
             catch (Exception e)
             {

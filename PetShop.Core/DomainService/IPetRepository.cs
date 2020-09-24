@@ -5,11 +5,11 @@ namespace PetShop.Core.DomainService
 {
     public interface IPetRepository
     {
-        List<Pet> ReadPets(string name);
+        IEnumerable<Pet> ReadPets();
         Pet Create(Pet pet);
         Pet Edit(Pet petEdit);
         Pet Delete(int id);
         Pet GetPetById(int id);
-        List<Pet> FindPetsByType(string searchString);
+        IEnumerable<Pet> FindPetsByType(string searchString);
     }
 }

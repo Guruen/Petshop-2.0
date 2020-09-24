@@ -28,7 +28,7 @@ namespace PetShop.WebAPI.Controllers
         {
             try
             {
-                return Ok(_petTypeService.GetPetType().ToList());
+                return Ok(_petTypeService.GetPetType());
             }
             catch (Exception e)
             {
