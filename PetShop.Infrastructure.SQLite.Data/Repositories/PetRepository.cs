@@ -26,15 +26,12 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
 
         public Pet Delete(int id)
         {
-            throw new NotImplementedException();
+            var petRemoved = _ctx.Remove(new Pet { Id = id }).Entity;
+            _ctx.SaveChanges();
+            return petRemoved;
         }
 
         public Pet Edit(Pet petEdit)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Pet> FindPetsByType(string searchString)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +46,7 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
 
         public IEnumerable<Pet> ReadPets()
         {
-            return _ctx.Pets;
+            return _ctx.Pets.Include(p => p.PetType);
         }
     }
 }

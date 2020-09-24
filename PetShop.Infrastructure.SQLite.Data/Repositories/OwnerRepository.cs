@@ -1,4 +1,5 @@
-﻿using PetShop.Core.DomainService;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Core.DomainService;
 using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
 
         public Owner Delete(int id)
         {
-            throw new NotImplementedException();
+            var ownerRemoved = _ctx.Remove(new Owner { Id = id }).Entity;
+            _ctx.SaveChanges();
+            return ownerRemoved;
         }
 
         public Owner Edit(Owner ownerEdit)
@@ -34,7 +37,10 @@ namespace PetShop.Infrastructure.SQLite.Data.Repositories
 
         public Owner GetOwnerById(int id)
         {
-            return _ctx.Owners.FirstOrDefault(o => o.Id == id);
+            return _ctx.Owners
+                .Include(o => o.Pets)
+                .ThenInclude(p => p.PetType)
+                .FirstOrDefault(o => o.Id == id);
         }
 
         public IEnumerable<Owner> ReadOwners()

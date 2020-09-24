@@ -10,6 +10,5 @@ namespace PetShop.Core.DomainService
         Pet Edit(Pet petEdit);
         Pet Delete(int id);
         Pet GetPetById(int id);
-        IEnumerable<Pet> FindPetsByType(string searchString);
     }
 }

@@ -119,7 +119,7 @@ namespace PetShop.WebAPI.Controllers
                     return StatusCode(404, "Pet with ID: " + id + " not found");
                 }
             
-                return StatusCode(202, "Pet with ID: {id} is deleted");
+                return StatusCode(202, $"Pet with ID: {id} is deleted");
             }
             catch (Exception e)
             {

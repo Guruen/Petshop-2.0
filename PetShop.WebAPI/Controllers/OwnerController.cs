@@ -45,7 +45,7 @@ namespace PetShop.WebAPI.Controllers
                 var owner = _ownerService.GetOwnerByIdIncludingPets(id);
                 if (owner == null)
                 {
-                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                    return StatusCode(404, $"Owner with ID: {id} not found");
                 }
                 return Ok(owner);
             }
@@ -90,7 +90,7 @@ namespace PetShop.WebAPI.Controllers
                 var editOwner = _ownerService.EditOwner(owner);
                 if (editOwner == null)
                 {
-                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                    return StatusCode(404, $"Owner with ID: {id} not found");
                 }
 
 
@@ -113,10 +113,10 @@ namespace PetShop.WebAPI.Controllers
                 var owner = _ownerService.DeleteOwner(id);
                 if (owner == null)
                 {
-                    return StatusCode(404, "Owner with ID: " + id + " not found");
+                    return StatusCode(404, $"Owner with ID: {id} not found");
                 }
 
-                return StatusCode(202, "Owner with ID: {id} is deleted");
+                return StatusCode(202, $"Owner with ID: {id} is deleted");
             }
             catch (Exception e)
             {
