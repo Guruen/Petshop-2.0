@@ -40,7 +40,12 @@ namespace PetShop.WebAPI
             services.AddControllers().AddNewtonsoftJson(option 
                 => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
+            services.AddCors(options =>
+                        options.AddDefaultPolicy(
+                            builder =>
+                        {
+                             builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                        }));
 
         }
 
@@ -63,6 +68,8 @@ namespace PetShop.WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
